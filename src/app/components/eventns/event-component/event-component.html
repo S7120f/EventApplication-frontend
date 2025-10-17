@@ -1,0 +1,13 @@
+<h1>Tillgängliga Evenemang</h1>
+<h3>Bläddra bland våra kommande evenemang och boka dina biljetter idag</h3>
+
+
+<div class="event-list">
+  <div class="event-card" *ngFor="let event of events">
+    <h2>{{ event.title }}</h2>
+    <p>{{ event.description }}</p>
+    <p><strong>Pris: </strong>{{ event.price }} kr</p>
+    <p><strong>Biljetter kvar: </strong>{{ event.ticketAvailable }}</p>
+    <button (click)="goToTicketPage(event.id)">Köp biljett</button>
+  </div>
+</div>
