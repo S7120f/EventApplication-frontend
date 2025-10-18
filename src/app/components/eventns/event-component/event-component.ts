@@ -28,7 +28,7 @@ export class EventComponent implements OnInit{
   }
 
   goToTicketPage(eventId: number): void{
-    this.router.navigate(['/ticket'], {queryParams: { id: eventId}});
+    this.router.navigate(['/ticket', eventId], {queryParams: { id: eventId}});
     console.log("id:", eventId)
   }
 

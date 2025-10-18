@@ -10,7 +10,7 @@ export const routes: Routes = [
     component: EventComponent,
   },
   {
-    path: 'ticket',
+    path: 'ticket/:id',
     component: TicketComponent,
   },
 ];

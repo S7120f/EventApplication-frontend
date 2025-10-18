@@ -1,1 +1,32 @@
-<p>ticket-component works!</p>
+<h3>TEST!!</h3>
+<div class="ticket-site">
+
+
+  <div class="ticket-info-card" *ngIf="event; else loading">
+    <h3> {{ event.title }}</h3>
+    <p> {{ event.description }}</p>
+    <p> {{ event.ticketAvailable }} antal lediga biljetter</p>
+
+  </div>
+
+  <br/>
+
+  <div class="ticket-card">
+    <div class="ticket-selector" *ngIf="event; else loading">
+      <p>Välj antal biljetter</p>
+      <p>Pris per biljett: {{ event.price }} </p>
+
+      <hr>
+
+      <p>Totalt: </p> <p>145 kr</p>
+
+      <button> Fortsätt till checkout </button>
+
+    </div>
+
+    <ng-template #loading>
+      <p>Laddar event...</p>
+    </ng-template>
+  </div>
+
+</div>

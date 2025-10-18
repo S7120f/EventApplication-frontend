@@ -18,8 +18,10 @@ export class EventService {
   }
 
 
+  getEventById(id: number): Observable<EventItem> {
+    return this.http.get<EventItem>(`${this.apiUrl}/${id}`)
 
-
+  }
 }
 
 
