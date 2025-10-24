@@ -18,9 +18,15 @@
 
       <hr>
 
-      <p>Totalt: </p> <p>145 kr</p>
+      <div class="ticket-counter">
+        <button name="increment-button" (click)="increment()">[+]</button>
+        <h2> {{ totalTickets }}</h2>
+        <button name="decrement-button" (click)="decrement()">[-]</button>
+      </div>
 
-      <button> Fortsätt till checkout </button>
+      <p>Totalt: </p> <p> {{ totalPrice }} </p>
+
+      <button (click)="goToCheckoutPage()"> Fortsätt till checkout </button>
 
     </div>
 

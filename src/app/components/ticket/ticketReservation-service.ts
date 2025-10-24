@@ -1,0 +1,21 @@
+import {inject, Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {TicketReservationMode} from './ticketReservation-mode';
+
+
+@Injectable({
+  providedIn: 'root'
+})
+
+export class TicketReservationService {
+
+  private readonly apiUrl = 'http://localhost:8080/api/reservations';
+  private readonly http = inject(HttpClient);
+
+  createTicketReservation(eventId: number, quantity: number): Observable<TicketReservationMode> {
+    return this.http.post<TicketReservationMode> (`${this.apiUrl}`, { eventId, quantity });
+  }
+
+}
+
