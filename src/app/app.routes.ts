@@ -3,6 +3,7 @@ import {App} from './app';
 import {TicketComponent} from './components/ticket/ticket-component/ticket-component';
 import {EventComponent} from './components/eventns/event-component/event-component';
 import {CheckoutComponent} from './components/checkout/checkout-component/checkout-component';
+import {SuccessPage} from './components/successPage/success-page';
 
 export const routes: Routes = [
 
@@ -18,4 +19,9 @@ export const routes: Routes = [
     path: 'checkout',
     component: CheckoutComponent,
   },
+  {
+    path: 'success',
+    component: SuccessPage,
+  },
+
 ];
