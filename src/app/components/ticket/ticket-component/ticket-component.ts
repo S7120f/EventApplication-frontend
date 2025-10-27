@@ -1,11 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {EventItem} from '../../eventns/event.model';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {EventService} from '../../eventns/event-service';
 import {NgIf} from '@angular/common';
 import {StripeCheckoutService} from '../../checkout/stripeCheckout-service';
 import {TicketReservationService} from '../ticketReservation-service';
 import {switchMap} from 'rxjs';
+import {CheckoutStateService} from '../../../service/checkoutStateService';
 
 @Component({
   selector: 'app-ticket-component',
@@ -25,8 +26,10 @@ export class TicketComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private eventService: EventService,
+    private router: Router,
     private stripeCheckoutService: StripeCheckoutService,
-    private ticketReservationService: TicketReservationService
+    private ticketReservationService: TicketReservationService,
+    private checkoutState: CheckoutStateService
   ) {
   }
 
@@ -63,6 +66,34 @@ export class TicketComponent implements OnInit {
   }
 
   goToCheckoutPage(): void {
+    if (!this.event) return;
+
+
+    this.ticketReservationService
+      .createTicketReservation(this.event!.id, this.totalTickets)
+      .subscribe({
+        next: (res) => {
+          console.log("Reservation skapad:", res);
+
+          //save data in shared state so checkout page knows what data to use
+          this.checkoutState.setState({
+            eventId: this.event!.id,
+            totalTickets: this.totalTickets,
+            totalPrice: this.totalPrice,
+            reservationId: res.id
+          });
+
+          // navigate to checkout-page when reservation is done
+          this.router.navigate(['/checkout-page']);
+        },
+        error: (err) => {
+          console.error("Could not crate reservation", err)
+        }
+      });
+
+
+
+    /*
     this.ticketReservationService
       .createTicketReservation(this.event!.id, this.totalTickets)
       .pipe(
@@ -79,6 +110,6 @@ export class TicketComponent implements OnInit {
           console.error('Stripe error', err);
           alert('Kunde inte starta betalning.');
         }
-      });
+      }); */
   }
 }

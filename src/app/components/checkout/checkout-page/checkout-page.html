@@ -1,0 +1,18 @@
+<p>checkout-page works!</p>
+
+<div class="checkout-conatiner" *ngIf="event">
+  <h2>Din reservation</h2>
+  <h2>Du köper biljetter till:</h2>
+  <h3> {{ event.title }}</h3>
+
+
+  <div class="checkout-summary" >
+    <p><strong>Antal biljetter: </strong> {{ totalTickets }}</p>
+    <p><strong>Total pris: </strong> {{ totalPrice }}</p>
+
+
+  </div>
+
+  <button class="checkout-btn" (click)="checkoutStripe()">Fortsätt till betalning</button>
+
+</div>

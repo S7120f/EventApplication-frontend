@@ -2,8 +2,9 @@ import { Routes } from '@angular/router';
 import {App} from './app';
 import {TicketComponent} from './components/ticket/ticket-component/ticket-component';
 import {EventComponent} from './components/eventns/event-component/event-component';
-import {CheckoutComponent} from './components/checkout/checkout-component/checkout-component';
-import {SuccessPage} from './components/successPage/success-page';
+import {CheckoutStripeComponent} from './components/checkout/checkoutStripe-component/checkoutStripe-component';
+import {SuccessPage} from './components/successPage/successSite/success-page';
+import {CheckoutPage} from './components/checkout/checkout-page/checkout-page';
 
 export const routes: Routes = [
 
@@ -16,8 +17,8 @@ export const routes: Routes = [
     component: TicketComponent,
   },
   {
-    path: 'checkout',
-    component: CheckoutComponent,
+    path: 'checkout-page',
+    component: CheckoutPage,
   },
   {
     path: 'success',
