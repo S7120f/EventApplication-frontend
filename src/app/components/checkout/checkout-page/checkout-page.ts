@@ -6,11 +6,13 @@ import {NgIf} from '@angular/common';
 import {TicketReservationService} from '../../ticket/ticketReservation-service';
 import {StripeCheckoutService} from '../stripeCheckout-service';
 import {CheckoutFlowService} from '../../../service/checkoutFlow-service';
+import {TimerComponent} from '../../timer-component/timer-component';
 
 @Component({
   selector: 'app-checkout-page',
   imports: [
-    NgIf
+    NgIf,
+    TimerComponent
   ],
   templateUrl: './checkout-page.html',
   styleUrl: './checkout-page.css'
@@ -21,6 +23,8 @@ export class CheckoutPage implements OnInit{
   totalPrice: number = 0;
   event: EventItem | null = null;
   reservationStatus!: string;
+
+  countDownSeconds = 60;
 
 
 

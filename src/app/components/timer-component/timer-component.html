@@ -1,0 +1,13 @@
+<p>timer-component works!</p>
+
+<div class="timeRemaining-container">
+  <div class="timer" *ngIf="remaining > 0">
+    <p>Slutför ditt köp inom: {{ formatTime(remaining) }} minuter </p>
+  </div>
+
+  <div class="endTimer" *ngIf="remaining <= 0">
+    <p>Reservationen har gått ut!</p>
+    <button (click)="goBack()">Tillbaka till startsidan</button>
+  </div>
+</div>
+
