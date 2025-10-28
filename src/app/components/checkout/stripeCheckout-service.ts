@@ -13,6 +13,9 @@ export class StripeCheckoutService {
 
 
   createCheckoutSession(reservationId: number): Observable<{url: string}> {
-    return this.http.post<{url: string}> (`${this.baseUrl}/checkout-session`, { reservationId });
+    return this.http.post<{url: string}> (`${this.baseUrl}/checkout-session`,
+      { reservationId },
+      { responseType: 'json' as const}
+    );
   }
 }

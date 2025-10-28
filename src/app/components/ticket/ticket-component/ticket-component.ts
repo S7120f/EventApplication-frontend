@@ -91,25 +91,5 @@ export class TicketComponent implements OnInit {
         }
       });
 
-
-
-    /*
-    this.ticketReservationService
-      .createTicketReservation(this.event!.id, this.totalTickets)
-      .pipe(
-        switchMap(reservation =>
-          this.stripeCheckoutService.createCheckoutSession(reservation.id)
-        )
-      )
-      .subscribe({
-        next: (response) => {
-          window.location.href = response.url; // redirect till stripe
-        },
-
-        error: (err) => {
-          console.error('Stripe error', err);
-          alert('Kunde inte starta betalning.');
-        }
-      }); */
   }
 }

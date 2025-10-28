@@ -17,5 +17,11 @@ export class TicketReservationService {
     return this.http.post<TicketReservationMode> (`${this.apiUrl}`, { eventId, quantity });
   }
 
+  getReservationStatus(reservationId: number): Observable<string> {
+    return this.http.get(`${this.apiUrl}/${reservationId}/status`, {
+      responseType: 'text'
+    });
+}
+
 }
 
