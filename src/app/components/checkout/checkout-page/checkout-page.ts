@@ -27,6 +27,7 @@ export class CheckoutPage implements OnInit, OnDestroy{
   reservationId?: number;
 
 
+  isGoingToStripe = false;
   countDownSeconds = 60;
 
 
@@ -55,6 +56,8 @@ export class CheckoutPage implements OnInit, OnDestroy{
   }
 
   checkoutStripe() {
+    this.isGoingToStripe = true;
+
     const state = this.checkoutState.getState();
     console.log("id är !!!!! -->> ", state.reservationId);
 
@@ -67,7 +70,7 @@ export class CheckoutPage implements OnInit, OnDestroy{
       next: (response) => {
         if (response?.url) {
           console.log("Försöker redirecta till: ", response.url);
-          window.location.href = response.url;
+          window.location.href = response.url; // redirectar till Stripe
         } else {
           console.warn("ingen URL mottagen", response);
         }
@@ -92,11 +95,15 @@ export class CheckoutPage implements OnInit, OnDestroy{
    */
   @HostListener('window:beforeunload', ['$event'])
   handleBeforeUnload(evet: Event){
-    this.cancelReservation();
+    if (!this.isGoingToStripe) {
+      this.cancelReservation();
+    }
   }
 
   ngOnDestroy(): void {
-    this.cancelReservation(); // Körs när kompinenten förstörs
+    if (!this.isGoingToStripe) { // Körs när komponenten förstörs
+      this.cancelReservation();
+    }
   }
 
 

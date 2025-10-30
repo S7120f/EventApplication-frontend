@@ -2,9 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {EventService} from '../event-service';
 import {EventItem} from '../event.model';
 import {NgForOf} from '@angular/common';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Router} from '@angular/router';
 import {WebSocketService} from '../../../service/WebSocketService';
-import {filter, of} from 'rxjs';
+import {filter} from 'rxjs';
 import {AiChat} from '../../ai-chat/aichat-component/ai-chat';
 
 @Component({
@@ -20,7 +20,6 @@ export class EventComponent implements OnInit{
 
   events: EventItem[] = [];
   constructor(
-    private route: ActivatedRoute,
     private eventService: EventService,
     private router: Router,
     private webSocketService: WebSocketService
@@ -42,24 +41,12 @@ export class EventComponent implements OnInit{
 
 
     //Lyssna på inkommande meddelande
-
     this.webSocketService.eventUpdates$
       .pipe(filter(event => !!event))
       .subscribe(updateEvent => {
         this.events = this.events.map(e =>
           e.id === updateEvent.id ? updateEvent : e)
       });
-
-    /*
-    this.webSocketService.eventUpdates$.subscribe(updateEvent => {
-      if(updateEvent) {
-        //Uppdatera rätt event i listan
-        const index = this.events.findIndex(e => e.id === updateEvent.id);
-        if (index !== -1) {
-          this.events[index] = updateEvent;
-        }
-      }
-    }); */
   }
 
   goToTicketPage(eventId: number): void{
