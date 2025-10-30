@@ -54,6 +54,7 @@ export class TicketComponent implements OnInit {
   }
 
 
+  // Hämta total pris
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id')); // get id from URL
 

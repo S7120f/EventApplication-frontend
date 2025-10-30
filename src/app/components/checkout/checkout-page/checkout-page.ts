@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnDestroy, OnInit} from '@angular/core';
 import {CheckoutStateService} from '../../../service/checkoutStateService';
 import {EventItem} from '../../eventns/event.model';
 import {EventService} from '../../eventns/event-service';
@@ -7,6 +7,7 @@ import {TicketReservationService} from '../../ticket/ticketReservation-service';
 import {StripeCheckoutService} from '../stripeCheckout-service';
 import {CheckoutFlowService} from '../../../service/checkoutFlow-service';
 import {TimerComponent} from '../../timer-component/timer-component';
+import {TicketReservationMode} from '../../ticket/ticketReservation-mode';
 
 @Component({
   selector: 'app-checkout-page',
@@ -17,12 +18,14 @@ import {TimerComponent} from '../../timer-component/timer-component';
   templateUrl: './checkout-page.html',
   styleUrl: './checkout-page.css'
 })
-export class CheckoutPage implements OnInit{
+export class CheckoutPage implements OnInit, OnDestroy{
 
   totalTickets: number = 0;
   totalPrice: number = 0;
   event: EventItem | null = null;
   reservationStatus!: string;
+  reservationId?: number;
+
 
   countDownSeconds = 60;
 
@@ -32,13 +35,14 @@ export class CheckoutPage implements OnInit{
               private eventService: EventService,
               private ticketReservationService: TicketReservationService,
               private stripeCheckoutService: StripeCheckoutService,
-              private checkoutFlowService: CheckoutFlowService) {}
+              private checkoutFlowService: CheckoutFlowService,) {}
 
   ngOnInit() {
     const state = this.checkoutState.getState();
 
     this.totalTickets = state.totalTickets;
     this.totalPrice = state.totalPrice;
+    this.reservationId = state.reservationId!;
     console.log('Event ID:', state.eventId);
     console.log('Antal biljetter:', state.totalTickets);
     console.log('Totalpris:', state.totalPrice);
@@ -73,5 +77,37 @@ export class CheckoutPage implements OnInit{
         alert(err.message || 'Kunde inte starta betalning.');
       }
     });
+  }
+
+  /**
+   * Lyssnar på webbläsarens "beforeunload"-händelse.
+   * Den triggas när användaren försöker:
+   * -uppdatera sidan
+   * -stänga fliken/fönstret,
+   * -navigera bort från sidan helt
+   *
+   * Om vi navigera bort från sidan innan checkout sätts event.returnValue = true
+   * vilket får webbläsaren att visa en varning som säger
+   * "Är du säker på att du vill lämnas sidan?
+   */
+  @HostListener('window:beforeunload', ['$event'])
+  handleBeforeUnload(evet: Event){
+    this.cancelReservation();
+  }
+
+  ngOnDestroy(): void {
+    this.cancelReservation(); // Körs när kompinenten förstörs
+  }
+
+
+  //metoden som pratar med backend
+  private cancelReservation(): void{
+    if (this.reservationId) {
+      this.ticketReservationService.cancelReservation(this.reservationId).subscribe({
+        next: () => console.log("Reservationen avbruten automatiskt"),
+        error: err => console.warn("Kunde inte avbryta reservationen", err)
+
+      })
+    }
   }
 }
