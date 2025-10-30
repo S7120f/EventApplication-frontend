@@ -5,11 +5,13 @@ import {NgForOf} from '@angular/common';
 import {ActivatedRoute, Router} from '@angular/router';
 import {WebSocketService} from '../../../service/WebSocketService';
 import {filter, of} from 'rxjs';
+import {AiChat} from '../../ai-chat/aichat-component/ai-chat';
 
 @Component({
   selector: 'app-event-component',
   imports: [
-    NgForOf
+    NgForOf,
+    AiChat
   ],
   templateUrl: './event-component.html',
   styleUrl: './event-component.css'

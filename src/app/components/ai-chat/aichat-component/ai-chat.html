@@ -1,0 +1,16 @@
+<p>ai-chat works!</p>
+
+
+<div class="aiChat-box">
+
+  <h2>AI Chat</h2>
+
+  <textarea [(ngModel)]="userMessage" placeholder="Skriv vad de event du är intresserad av till Ai"></textarea>
+  <button (click)="send()">Skicka</button>
+
+  <div class="ai-response">
+    <strong>AI: </strong>
+    <p> {{ aiResponse }} </p>
+  </div>
+
+</div>
