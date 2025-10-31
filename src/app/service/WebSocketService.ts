@@ -12,6 +12,8 @@ import {environment} from '../environments/environment';
 
 export class WebSocketService {
 
+
+
   // Websocket-klienten för att prata med servern
   private client: Client;
   private isConnected = false;
