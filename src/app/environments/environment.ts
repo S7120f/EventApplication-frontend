@@ -1,6 +1,6 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl: 'http://localhost:8080',
-  wsBaseUrl: 'http://localhost:8080/ws'
+  apiBaseUrl: 'https://starfish-app-u9vws.ondigitalocean.app',
+  wsBaseUrl: 'https://starfish-app-u9vws.ondigitalocean.app/ws'
 };
