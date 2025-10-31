@@ -2,6 +2,7 @@ import {inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {TicketReservationMode} from './ticketReservation-mode';
+import {environment} from '../../environments/environment';
 
 
 @Injectable({
@@ -10,7 +11,7 @@ import {TicketReservationMode} from './ticketReservation-mode';
 
 export class TicketReservationService {
 
-  private readonly apiUrl = 'http://localhost:8080/api/reservations';
+  private readonly apiUrl = `${environment.apiBaseUrl}/api/reservations`;
   private readonly http = inject(HttpClient);
 
   createTicketReservation(eventId: number, quantity: number): Observable<TicketReservationMode> {

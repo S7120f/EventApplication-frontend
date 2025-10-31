@@ -1,6 +1,7 @@
 import {inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {environment} from '../../environments/environment';
 
 
 @Injectable({
@@ -8,7 +9,7 @@ import {Observable} from 'rxjs';
 })
 export class SuccessPageService{
 
-  private readonly apiUrl = 'http://localhost:8080/api/stripe/verify';
+  private readonly apiUrl = `${environment.apiBaseUrl}/api/stripe/verify`;
   private readonly http = inject(HttpClient);
 
 

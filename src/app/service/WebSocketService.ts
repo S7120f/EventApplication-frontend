@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Client, Message} from '@stomp/stompjs';
 import SockJS from 'sockjs-client';
 import {BehaviorSubject} from 'rxjs';
+import {environment} from '../environments/environment';
 
 
 
@@ -28,7 +29,7 @@ export class WebSocketService {
   constructor() {
     // Skapa STOMP-klient och koppla till backendens WebSocket-endpoint
     this.client = new Client({
-      webSocketFactory: () => new SockJS("http://localhost:8080/ws"), // backend-url
+      webSocketFactory: () => new SockJS(environment.wsBaseUrl), // backend-url
       reconnectDelay: 5000,
     });
 

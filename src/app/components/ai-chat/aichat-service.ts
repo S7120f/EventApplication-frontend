@@ -1,6 +1,7 @@
 import {inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {environment} from '../../environments/environment';
 
 
 @Injectable({
@@ -9,7 +10,7 @@ import {Observable} from 'rxjs';
 
 export class AiChatService {
 
-  private readonly apiUrl = 'http://localhost:8080/api/chat';
+  private readonly apiUrl = `${environment.apiBaseUrl}/api/chat`;
   private readonly http = inject(HttpClient);
 
   sendChatMessage(message: string): Observable<string> {
