@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Client, Message} from '@stomp/stompjs';
 import SockJS from 'sockjs-client';
 import {BehaviorSubject} from 'rxjs';
-import {environment} from '../environments/environment';
+import {environment} from '../../environments/environment';
 
 
 
