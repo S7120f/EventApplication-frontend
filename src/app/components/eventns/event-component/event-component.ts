@@ -42,8 +42,9 @@ export class EventComponent implements OnInit{
 
     //Lyssna på inkommande meddelande
     this.webSocketService.eventUpdates$
-      .pipe(filter(event => !!event))
+      .pipe(filter(event => !!event)) // släpp endast genom värden som inte är null eller undefined - !!event omvandlar värdet till true eller false
       .subscribe(updateEvent => {
+        // gå genom alla events i listan, ersätt det som har samma ID
         this.events = this.events.map(e =>
           e.id === updateEvent.id ? updateEvent : e)
       });

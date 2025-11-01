@@ -1,15 +1,25 @@
-<h1>Tillgängliga Evenemang</h1>
-<h3>Bläddra bland våra kommande evenemang och boka dina biljetter idag</h3>
+<section class="events-section">
+  <h1 class="title">Tillgängliga Evenemang</h1>
+  <p class="subtitle">Bläddra bland våra kommande evenemang och boka dina biljetter idag</p>
 
+  <div class="event-grid">
+    <div class="event-card" *ngFor="let event of events">
+      <div class="event-content">
+        <h2 class="event-title">{{ event.title }}</h2>
+        <p class="event-description">{{ event.description }}</p>
 
-<div class="event-list">
-  <div class="event-card" *ngFor="let event of events">
-    <h2>{{ event.title }}</h2>
-    <p>{{ event.description }}</p>
-    <p><strong>Pris: </strong>{{ event.price }} kr</p>
-    <p><strong>Biljetter kvar: </strong>{{ event.ticketAvailable }}</p>
-    <button (click)="goToTicketPage(event.id)">Köp biljett</button>
+        <div class="event-footer">
+          <p class="tickets">{{ event.ticketAvailable }} biljetter kvar</p>
+          <p class="price">{{ event.price }} kr</p>
+        </div>
+
+        <button class="buy-button" (click)="goToTicketPage(event.id)">Köp biljett</button>
+      </div>
+    </div>
   </div>
-</div>
+</section>
 
-<app-ai-chat> </app-ai-chat>
+<!-- AI-chatt -->
+<div class="chat-widget">
+  <app-ai-chat></app-ai-chat>
+</div>

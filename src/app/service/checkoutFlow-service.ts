@@ -14,7 +14,16 @@ export class CheckoutFlowService {
     private stripeCheckoutService: StripeCheckoutService
   ) {}
 
-  startCheckout(reservationId: number) {
+/**
+ *  Startar checkout-flödet för en reservation.
+ *
+ * Steg:
+ * Hämtar reservationens status från backend.
+ * Om status är "ACTIVE" – startar Stripe-checkout-sessionen.
+ * Om status är "EXPIRED" – kastar ett fel och stoppar processen.
+ * Hanterar eventuella fel (t.ex. utgången eller ogiltig reservation).
+ */
+ startCheckout(reservationId: number) {
     return this.ticketReservationService.getReservationStatus(reservationId).pipe(
       tap(status => {
         console.log("Status mottagen ", status);

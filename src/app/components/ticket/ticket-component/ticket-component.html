@@ -1,38 +1,40 @@
-<h3>TEST!!</h3>
-<div class="ticket-site">
+<section class="ticket-page">
+  <div class="ticket-container" *ngIf="event; else loading">
 
+    <!-- Vänster sida eventinfo -->
+    <div class="ticket-info">
+      <h1 class="event-title">{{ event.title }}</h1>
+      <p class="event-description">{{ event.description }}</p>
+    </div>
 
-  <div class="ticket-info-card" *ngIf="event; else loading">
-    <h3> {{ event.title }}</h3>
-    <p> {{ event.description }}</p>
-    <p> {{ event.ticketAvailable }} antal lediga biljetter</p>
+    <!-- Höger sida biljettval -->
+    <div class="ticket-purchase-card">
+      <h3>Välj biljetter</h3>
+      <div class="ticket-details">
+        <p>Pris per biljett:</p>
+        <p class="ticket-price">{{ event.price }} kr</p>
+      </div>
 
-  </div>
-
-  <br/>
-
-  <div class="ticket-card">
-    <div class="ticket-selector" *ngIf="event; else loading">
-      <p>Välj antal biljetter</p>
-      <p>Pris per biljett: {{ event.price }} </p>
+      <div class="ticket-counter">
+        <button (click)="decrement()">−</button>
+        <h2>{{ totalTickets }}</h2>
+        <button (click)="increment()">+</button>
+      </div>
 
       <hr>
 
-      <div class="ticket-counter">
-        <button name="increment-button" (click)="increment()">[+]</button>
-        <h2> {{ totalTickets }}</h2>
-        <button name="decrement-button" (click)="decrement()">[-]</button>
+      <div class="total-row">
+        <p>Totalt:</p>
+        <p class="total-price">{{ totalPrice }} kr</p>
       </div>
 
-      <p>Totalt: </p> <p> {{ totalPrice }} </p>
-
-      <button (click)="goToCheckoutPage()"> Fortsätt till checkout </button>
-
+      <button class="checkout-button" (click)="goToCheckoutPage()">
+        Fortsätt till betalning
+      </button>
     </div>
-
-    <ng-template #loading>
-      <p>Laddar event...</p>
-    </ng-template>
   </div>
 
-</div>
+  <ng-template #loading>
+    <p>Laddar event...</p>
+  </ng-template>
+</section>

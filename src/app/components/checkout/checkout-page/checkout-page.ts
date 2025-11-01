@@ -69,8 +69,8 @@ export class CheckoutPage implements OnInit, OnDestroy{
     this.checkoutFlowService.startCheckout(state.reservationId).subscribe({
       next: (response) => {
         if (response?.url) {
-          console.log("Försöker redirecta till: ", response.url);
-          window.location.href = response.url; // redirectar till Stripe
+          console.log("Försöker redirect till: ", response.url);
+          window.location.href = response.url; // redirect till Stripe
         } else {
           console.warn("ingen URL mottagen", response);
         }

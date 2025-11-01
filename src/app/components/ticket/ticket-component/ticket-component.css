@@ -1,0 +1,122 @@
+.ticket-page {
+  padding: 2rem 4rem;
+  background-color: #f9fafc;
+  min-height: 100vh;
+}
+
+.ticket-container {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+.ticket-info {
+  text-align: left;
+}
+
+.event-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.event-description {
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.event-tickets {
+  color: #777;
+  font-size: 0.95rem;
+}
+
+.ticket-purchase-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.8rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.ticket-purchase-card h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.ticket-details {
+  display: flex;
+  justify-content: space-between;
+  color: #333;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.ticket-price {
+  font-weight: 600;
+}
+
+.ticket-counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.ticket-counter button {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 8px;
+  background-color: #e8ecff;
+  color: #3b5bdb;
+  font-size: 1.4rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.ticket-counter h2 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  margin: 1rem 0;
+}
+
+.total-price {
+  font-size: 1.1rem;
+  color: #111;
+}
+
+.checkout-button {
+  background-color: #111;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 0.9rem;
+  width: 100%;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.checkout-button:hover {
+  background-color: #222;
+}
+
+/* Responsiv layout */
+@media (max-width: 900px) {
+  .ticket-container {
+    grid-template-columns: 1fr;
+  }
+
+  .ticket-purchase-card {
+    margin-top: 2rem;
+  }
+}

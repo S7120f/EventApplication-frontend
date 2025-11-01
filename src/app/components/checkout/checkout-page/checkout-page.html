@@ -1,20 +1,37 @@
-<p>checkout-page works!</p>
+<section class="checkout-page" *ngIf="event">
+  <app-timer-component [seconds]="countDownSeconds"></app-timer-component>
 
-<app-timer-component [seconds]="countDownSeconds"></app-timer-component>
+  <div class="checkout-container">
+    <h1 class="checkout-title">Din reservation</h1>
+    <p class="checkout-subtitle">Granska din bokning innan du går vidare till betalning</p>
 
-<div class="checkout-conatiner" *ngIf="event">
-  <h2>Din reservation</h2>
-  <h2>Du köper biljetter till:</h2>
-  <h3> {{ event.title }}</h3>
+    <div class="checkout-card">
+      <h2 class="event-title">{{ event.title }}</h2>
 
+      <div class="checkout-summary">
+        <div class="summary-row">
+          <span>Antal biljetter</span>
+          <span>{{ totalTickets }}</span>
+        </div>
 
-  <div class="checkout-summary" >
-    <p><strong>Antal biljetter: </strong> {{ totalTickets }}</p>
-    <p><strong>Total pris: </strong> {{ totalPrice }}</p>
+        <div class="summary-row">
+          <span>Pris per biljett</span>
+          <span>{{ event.price }} kr</span>
+        </div>
 
+        <hr />
 
+        <div class="summary-row total">
+          <span>Totalt</span>
+          <span>{{ totalPrice }} kr</span>
+        </div>
+      </div>
+
+      <button class="checkout-btn" (click)="checkoutStripe()">Fortsätt till betalning</button>
+    </div>
   </div>
+</section>
 
-  <button class="checkout-btn" (click)="checkoutStripe()">Fortsätt till betalning</button>
-
-</div>
+<ng-template #loading>
+  <p>Laddar information...</p>
+</ng-template>

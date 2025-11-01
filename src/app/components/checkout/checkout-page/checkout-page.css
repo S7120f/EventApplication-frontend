@@ -1,0 +1,92 @@
+.checkout-page {
+  padding: 2rem 4rem;
+  background-color: #f9fafc;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.checkout-container {
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+}
+
+.checkout-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.checkout-subtitle {
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.checkout-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  text-align: left;
+}
+
+.event-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.checkout-summary {
+  margin-bottom: 2rem;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.8rem;
+  color: #333;
+  font-size: 1rem;
+}
+
+.summary-row.total {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #111;
+}
+
+.checkout-btn {
+  background-color: #3b5bdb;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 0.9rem;
+  width: 100%;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.checkout-btn:hover {
+  background-color: #3047b0;
+}
+
+/* Timer ovanför ska centreras */
+app-timer-component {
+  display: block;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Responsiv layout */
+@media (max-width: 600px) {
+  .checkout-page {
+    padding: 1rem;
+  }
+
+  .checkout-card {
+    padding: 1.5rem;
+  }
+}

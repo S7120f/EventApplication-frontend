@@ -21,10 +21,12 @@ export class CheckoutStateService {
 
   state$ = this.stateSource.asObservable();
 
+ // uppdatera state med nytt värde
   setState(newState: CheckoutState): void {
-    this.stateSource.next(newState);
+    this.stateSource.next(newState); // skickar nytt värde till alla som subscribat
   }
 
+  // Hämtar nuvarande state ( Senate värdet i BehaviorSubject)
   getState(): CheckoutState {
     return this.stateSource.value;
   }
