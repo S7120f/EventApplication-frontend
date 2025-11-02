@@ -1,6 +1,6 @@
 
 export const environment = {
   production: true,
-  apiBaseUrl: 'https://shark-app-yyjps.ondigitalocean.app',
-  wsBaseUrl: 'https://shark-app-yyjps.ondigitalocean.app/ws'
+  apiBaseUrl: 'https://shark-app-yvjps.ondigitalocean.app/',
+  wsBaseUrl: 'https://shark-app-yvjps.ondigitalocean.app/ws'
 };
