@@ -7,7 +7,6 @@ import {TicketReservationService} from '../../ticket/ticketReservation-service';
 import {StripeCheckoutService} from '../stripeCheckout-service';
 import {CheckoutFlowService} from '../../../service/checkoutFlow-service';
 import {TimerComponent} from '../../timer-component/timer-component';
-import {TicketReservationMode} from '../../ticket/ticketReservation-mode';
 
 @Component({
   selector: 'app-checkout-page',
@@ -23,7 +22,6 @@ export class CheckoutPage implements OnInit, OnDestroy{
   totalTickets: number = 0;
   totalPrice: number = 0;
   event: EventItem | null = null;
-  reservationStatus!: string;
   reservationId?: number;
 
 

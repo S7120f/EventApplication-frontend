@@ -1,13 +1,14 @@
-<p>timer-component works!</p>
-
-<div class="timeRemaining-container">
-  <div class="timer" *ngIf="remaining > 0">
-    <p>Slutför ditt köp inom: {{ formatTime(remaining) }} minuter </p>
-  </div>
-
-  <div class="endTimer" *ngIf="remaining <= 0">
-    <p>Reservationen har gått ut!</p>
-    <button (click)="goBack()">Tillbaka till startsidan</button>
+<div class="timer-wrapper" *ngIf="remaining > 0; else expired">
+  <div class="timer-box">
+    <i class="fa-regular fa-clock"></i>
+    <span>Slutför ditt köp inom:</span>
+    <strong>{{ formatTime(remaining) }}</strong>
   </div>
 </div>
 
+<ng-template #expired>
+  <div class="timer-expired">
+    <p>Reservationen har gått ut!</p>
+    <button (click)="goBack()">Tillbaka till startsidan</button>
+  </div>
+</ng-template>

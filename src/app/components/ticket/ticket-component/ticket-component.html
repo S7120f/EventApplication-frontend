@@ -1,34 +1,40 @@
 <section class="ticket-page">
-  <div class="ticket-container" *ngIf="event; else loading">
 
-    <!-- Vänster sida eventinfo -->
-    <div class="ticket-info">
+  <div class="ticket-box" *ngIf="event; else loading">
+    <!-- Vänster sida -->
+    <div class="event-info">
       <h1 class="event-title">{{ event.title }}</h1>
       <p class="event-description">{{ event.description }}</p>
+
+      <div class="event-meta">
+        <p class="event-detail"><i class="fa-regular fa-calendar"></i> 15 juli 2025</p>
+        <p class="event-detail"><i class="fa-solid fa-location-dot"></i> Stockholm Arena</p>
+        <p class="event-detail"><i class="fa-regular fa-ticket"></i> {{ event.ticketAvailable }} biljetter kvar</p>
+      </div>
     </div>
 
-    <!-- Höger sida biljettval -->
-    <div class="ticket-purchase-card">
+    <!-- Höger sida -->
+    <div class="purchase-section">
       <h3>Välj biljetter</h3>
-      <div class="ticket-details">
-        <p>Pris per biljett:</p>
-        <p class="ticket-price">{{ event.price }} kr</p>
+      <div class="price-row">
+        <span>Pris per biljett</span>
+        <span class="price">{{ event.price }} kr</span>
       </div>
 
-      <div class="ticket-counter">
+      <div class="counter">
         <button (click)="decrement()">−</button>
-        <h2>{{ totalTickets }}</h2>
+        <span>{{ totalTickets }}</span>
         <button (click)="increment()">+</button>
       </div>
 
-      <hr>
+      <hr />
 
       <div class="total-row">
-        <p>Totalt:</p>
-        <p class="total-price">{{ totalPrice }} kr</p>
+        <span>Totalt</span>
+        <span class="total">{{ totalPrice }} kr</span>
       </div>
 
-      <button class="checkout-button" (click)="goToCheckoutPage()">
+      <button class="checkout-btn" (click)="goToCheckoutPage()">
         Fortsätt till betalning
       </button>
     </div>

@@ -1,18 +1,37 @@
 .ticket-page {
-  padding: 2rem 4rem;
   background-color: #f9fafc;
   min-height: 100vh;
+  padding: 3rem 6rem;
+  font-family: "Inter", sans-serif;
 }
 
-.ticket-container {
+/* Länken högst upp */
+.back-link {
+  display: inline-block;
+  color: #3b5bdb;
+  font-weight: 500;
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+}
+.back-link:hover {
+  text-decoration: underline;
+}
+
+/* Den vita huvudboxen */
+.ticket-box {
+  background: #fff;
+  border-radius: 16px;
+  padding: 3rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
   display: grid;
-  grid-template-columns: 1fr 400px;
+  grid-template-columns: 1.3fr 0.7fr;
   gap: 3rem;
-  align-items: flex-start;
+  align-items: start;
 }
 
-.ticket-info {
-  text-align: left;
+/* Vänster sektion */
+.event-info {
+  color: #111;
 }
 
 .event-title {
@@ -23,40 +42,53 @@
 
 .event-description {
   color: #555;
-  margin-bottom: 1rem;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
 }
 
-.event-tickets {
-  color: #777;
+.event-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.event-detail {
+  color: #444;
   font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.ticket-purchase-card {
+/* Höger sektion */
+.purchase-section {
   background: #fff;
-  border-radius: 16px;
-  padding: 1.8rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 2rem;
 }
 
-.ticket-purchase-card h3 {
-  font-size: 1.2rem;
+.purchase-section h3 {
+  margin-bottom: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 600;
-  margin-bottom: 1rem;
 }
 
-.ticket-details {
+.price-row,
+.total-row {
   display: flex;
   justify-content: space-between;
-  color: #333;
-  font-size: 1rem;
+  align-items: center;
+  font-weight: 500;
   margin-bottom: 1rem;
 }
 
-.ticket-price {
-  font-weight: 600;
+.price {
+  color: #111;
 }
 
-.ticket-counter {
+.counter {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -64,59 +96,51 @@
   margin: 1rem 0;
 }
 
-.ticket-counter button {
+.counter button {
+  background-color: #f3f4f6;
+  border: 1px solid #ccc;
+  border-radius: 8px;
   width: 36px;
   height: 36px;
-  border: none;
-  border-radius: 8px;
-  background-color: #e8ecff;
-  color: #3b5bdb;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 600;
+  transition: 0.2s;
 }
-
-.ticket-counter h2 {
-  margin: 0;
-  font-size: 1.3rem;
+.counter button:hover {
+  background-color: #e8ebef;
 }
 
 .total-row {
-  display: flex;
-  justify-content: space-between;
+  margin: 1.5rem 0;
   font-weight: 600;
-  margin: 1rem 0;
+  font-size: 1rem;
 }
 
-.total-price {
+.total {
+  font-weight: 700;
   font-size: 1.1rem;
-  color: #111;
 }
 
-.checkout-button {
-  background-color: #111;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  padding: 0.9rem;
+.checkout-btn {
+  background-color: #0b0b17;
+  color: #fff;
   width: 100%;
+  padding: 0.9rem;
+  border-radius: 10px;
+  border: none;
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
-
-.checkout-button:hover {
-  background-color: #222;
+.checkout-btn:hover {
+  background-color: #15152b;
 }
 
-/* Responsiv layout */
+/* Responsiv */
 @media (max-width: 900px) {
-  .ticket-container {
+  .ticket-box {
     grid-template-columns: 1fr;
-  }
-
-  .ticket-purchase-card {
-    margin-top: 2rem;
   }
 }

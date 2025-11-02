@@ -1,0 +1,50 @@
+.timer-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.timer-box {
+  background-color: #fff4eb;
+  border: 1px solid #ffd8b5;
+  border-radius: 12px;
+  padding: 0.8rem 1.4rem;
+  color: #8a4d00;
+  font-size: 0.95rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.timer-box i {
+  color: #f57c00;
+  font-size: 1rem;
+}
+
+.timer-box strong {
+  color: #e65100;
+  font-weight: 700;
+}
+
+.timer-expired {
+  text-align: center;
+  color: #b00020;
+}
+
+.timer-expired button {
+  background-color: #3b5bdb;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.timer-expired button:hover {
+  background-color: #3047b0;
+}

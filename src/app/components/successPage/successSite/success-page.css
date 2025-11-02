@@ -4,48 +4,65 @@
   align-items: center;
   height: 100vh;
   background-color: #f9fafc;
+  padding: 1rem;
 }
 
 .success-card {
   background: #fff;
   border-radius: 16px;
-  padding: 2.5rem 3rem;
+  padding: 3rem 3.5rem;
   text-align: center;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
   max-width: 480px;
   width: 100%;
+  animation: fadeIn 0.4s ease;
 }
 
 .success-icon {
   background-color: #4caf50;
   color: white;
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: bold;
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 auto 1rem;
+  margin: 0 auto 1.5rem;
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+.success-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 0.5rem;
 }
 
 .success-message {
-  font-size: 1.6rem;
-  font-weight: 700;
-  margin-bottom: 0.8rem;
-}
-
-.session-id {
   color: #555;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   margin-bottom: 1.5rem;
 }
 
-.info-text {
-  color: #666;
-  font-size: 0.95rem;
+.order-info {
+  background-color: #f3f5ff;
+  border-radius: 12px;
+  padding: 0.8rem 1rem;
   margin-bottom: 2rem;
+  font-size: 0.95rem;
+}
+
+.order-label {
+  color: #555;
+  font-weight: 600;
+  margin-right: 0.3rem;
+}
+
+.order-id {
+  color: #3b5bdb;
+  font-weight: 600;
 }
 
 .home-button {
@@ -53,19 +70,38 @@
   color: white;
   border: none;
   border-radius: 10px;
-  padding: 0.8rem 1.5rem;
-  cursor: pointer;
+  padding: 0.9rem 1.6rem;
   font-weight: 600;
-  transition: background-color 0.2s ease;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.25s ease, transform 0.15s ease;
 }
 
 .home-button:hover {
   background-color: #3047b0;
+  transform: translateY(-2px);
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Responsiv */
 @media (max-width: 600px) {
   .success-card {
     padding: 2rem;
+  }
+
+  .success-title {
+    font-size: 1.5rem;
   }
 }

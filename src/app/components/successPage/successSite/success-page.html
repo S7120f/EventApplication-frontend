@@ -1,11 +1,16 @@
 <section class="success-page">
   <div class="success-card">
-    <div class="success-icon">✔</div>
+    <div class="success-icon">✓</div>
 
-    <h2 class="success-message">{{ message }}</h2>
-    <p *ngIf="sessionId" class="session-id">Ordernummer: {{ sessionId }}</p>
+    <h1 class="success-title">Betalning genomförd</h1>
+    <p class="success-message">{{ message || 'Tack för ditt köp!' }}</p>
 
+    <div *ngIf="sessionId" class="order-info">
+      <span class="order-label">Ordernummer:</span>
+      <span class="order-id">{{ sessionId }}</span>
+    </div>
 
-    <button class="home-button" routerLink="/">Tillbaka till startsidan</button>
+    <button class="home-button" (click)="goHome()">Tillbaka till startsidan</button>
   </div>
 </section>
+z
